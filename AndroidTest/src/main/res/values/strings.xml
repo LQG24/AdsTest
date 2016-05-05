@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroidTest</string>
+    <string name="title_activity_mmc_da_ping">MmcDaPingActivity</string>
+    <string name="title_activity_mogo_daping">MogoDapingActivity</string>
+    <string name="title_activity_gdt_ad">GdtAdActivity</string>
+    <string name="title_activity_admob_da_ping">AdmobDaPingActivity</string>
+    <string name="title_activity_bai_du_da_ping_acitity">BaiDuDaPingAcitity</string>
+    <string name="title_activity_test_api">TestApi</string>
+    <string name="title_activity_native_ad">NativeAdActivity</string>
+</resources>

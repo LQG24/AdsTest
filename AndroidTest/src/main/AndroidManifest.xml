@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="oms.mmc.test.android" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:name="oms.mmc.test.application.TestApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 银联支付 -->
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- <activity android:name="oms.mmc.test.android.SecondActivity" /> -->
+        <activity android:name="oms.mmc.app.WebBrowserActivity" />
+        <!-- <activity android:name="oms.mmc.viewpaper.viewpager.ViewPagerActivity"/> -->
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5158e9ba5270151898000005" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="国内版" />
+
+        <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <!-- alipay sdk end -->
+
+        <service
+            android:name="oms.mmc.pay.service.SaveOrderService"
+            android:exported="false" />
+
+
+        <!-- =========广告模块========-->
+        <!-- ADSMOGO ADMOB  ADBAIDU ADGDT NONE -->
+        <meta-data
+            android:name="AD_TYPE"
+            android:value="ADSMOGO" />
+        <meta-data
+            android:name="ADSMOGO_APPKEY"
+            android:value="93535c6092f543e8a257ee435a69da06" />
+
+
+        <!-- 声明Mogo 相关组件 start -->
+        <activity
+            android:name="com.adsmogo.adview.AdsMogoWebView"
+            android:configChanges="orientation|keyboardHidden|screenSize|keyboard|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <!-- 注册Service，应用下载所需 -->
+        <service
+            android:name="com.adsmogo.controller.service.UpdateService"
+            android:exported="true"
+            android:process=":remote" />
+        <!-- 注册Service，应用被安装所用 -->
+        <service
+            android:name="com.adsmogo.controller.service.CountService"
+            android:exported="true"
+            android:process=":remote" />
+
+        <!-- 声明Mogo相关组件 end -->
+
+
+        <!-- 声明 多盟 广告组件 -->
+        <activity
+            android:name="cn.domob.android.ads.DmActivity"
+            android:theme="@android:style/Theme.Translucent" />
+
+
+        <!--声明 AdMob 广告相关组件 -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="6587000" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <meta-data
+            android:name="GM_KEY"
+            android:value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArFdtKZL6rNMjphPd5hf9PmgXIlgRmmrcRNieSne0UNITKruGuduhDlY+RhVo5J6p0PfTiA9WO9vbhUTZGDMg+k225/qFY7zP92OUEsuNweVTG0wJQ74lhXv9CzzW9eUVSD1EfEvjg4Rx7cmOeiPJBiOE2qysvq4wE8imqNw3GL4EKxwryYSjFMC3vNViYrq7L/VWkBwK7v2MHzCYBcsohU91Z3YAju2jkOzRU1hrBEOyKNbYxrR/XSGbFzVQigwg88mThoOMOXpZOEk1TF+wb1q76VsTXmHjAmIna8VUo0sL4JcSJs2WC2aChi6yk5Ha0oU6p37Uu98MsUuIwgLUbQIDAQAB" />
+        <!--声明 AdMob 广告相关组件 end -->
+
+        <!-- 声明广点通广告相关组件 start -->
+
+
+
+
+
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" >
+        </service>
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+        </activity>
+        <!-- 声明广点通广告相关组件 end -->
+
+        <!-- 声明百度广告相关的组件 start-->
+
+        <meta-data
+            android:name="BaiduMobAd_APP_ID"
+            android:value="e866cfb0" />
+        <activity
+            android:name="com.baidu.mobads.AppActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation" />
+        <activity
+            android:name="com.baidu.mobad.feeds.BaiduActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation" />
+        <!-- 声明百度广告相关的组件 end-->
+
+        <!-- =========广告模块====end====-->
+
+        <activity
+            android:name="oms.mmc.test.ad.MmcDaPingActivity"
+            android:label="自家大屏广告" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="oms.mmc.test.ad.MogoDapingActivity"
+            android:label="芒果大屏广告" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="oms.mmc.test.ad.GdtAdActivity"
+            android:label="广点通原生广告(自定义)" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="oms.mmc.test.ad.AdmobDaPingActivity"
+            android:label="谷歌大屏广告" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="oms.mmc.test.ad.BaiDuDaPingAcitity"
+            android:label="百度大屏广告" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="oms.mmc.test.ad.NativeAdActivity"
+            android:label="百度原生广告">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name="oms.mmc.test.ad.VideoAdActivity"
+            android:label="百度视频广告">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="ad_test_action" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="oms.mmc.test.ad.TestApi"
+            android:label="@string/title_activity_test_api" >
+        </activity>
+
+
+
+    </application>
+
+</manifest>

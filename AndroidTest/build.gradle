@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId "oms.mmc.test"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 501
+        versionName "5.0.1"
+        multiDexEnabled true
+    }
+    signingConfigs {
+        config {
+            keyAlias 'suanming.keystore'
+            keyPassword '37418675'
+            storePassword '37418675'
+            storeFile file(SUANMING_STOREFILE)
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
+    afterEvaluate {
+        tasks.matching {
+            it.name.startsWith('dex')
+        }.each { dx ->
+            if (dx.additionalParameters == null) {
+                dx.additionalParameters = []
+            }
+            dx.additionalParameters += '--multi-dex' // enable multidex
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+    }
+}
+
+repositories {
+    maven {
+        url MAVEN_URL
+        credentials {
+            username MAVEN_USERNAME
+            password MAVEN_PASSWORD
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:multidex:1.0.1'
+    //广点通原生广告需要加
+    compile 'com.nostra13:uil:1.9.4'
+    compile 'com.adsmogo:domob:4.5.2'
+    compile 'com.adsmogo:o2omobi:4.0.1'
+    compile 'oms.mmc:mmcsdk:1.5.1.0-SNAPSHOT@aar'
+
+    //自家封装的广告组件
+    //＝＝＝＝＝＝广告组件开始＝＝＝＝＝＝
+    //经芒果平台处理过的谷歌服务
+    compile 'com.google:play-services:6.5.87'
+    //芒果广告平台
+    compile 'com.adsmogo:adsmogo:1.6.0'
+
+//    compile 'com.adsmogo:adsmogo:1.6.4'
+//    compile 'com.adsmogo:domob:4.6.4'
+//    compile 'com.baidu:mobad:4.2'
+
+    compile 'oms.mmc:adviews:1.3.3-SNAPSHOT@aar'
+    //百度广告
+    compile 'com.baidu:mobad:4.6'
+    //原生广告
+    compile 'com.tencent:gdt:4.8.5'
+}
